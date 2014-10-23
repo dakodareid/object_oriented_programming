@@ -15,7 +15,9 @@ class Rover
 		elsif instruction == "L"
 			turn_left
 		elsif instruction == "R"
-			turn_right			
+			turn_right		
+		elsif instruction == "EXIT"
+			close_app
 		end
 	end
 
@@ -24,10 +26,10 @@ class Rover
 			@direction = "W"
 		elsif @direction == "W"
 			@direction = "S"
-		elsif @direction = "S"
-			@direction == "E"
-		elsif @direction = "E"
-			@direction == "N"
+		elsif @direction == "S"
+			@direction = "E"
+		elsif @direction == "E"
+			@direction = "N"
 		end
 	end
 
@@ -55,15 +57,22 @@ class Rover
 		end		
 	end
 
+	def close_app
+		puts "See ya!"
+		exit
+	end
+
 end
 
 rover = Rover.new(0,0,"N")
 
 #Starting Position
-puts "Rover's current position is #{rover.x}, #{rover.y}, facing #{rover.direction}."
+puts "Rover's STARTING position is #{rover.x}, #{rover.y}, facing #{rover.direction}."
 
-rover.read_instruction("M")
-puts "Rover's current position is #{rover.x}, #{rover.y}, facing #{rover.direction}."
+puts "Whats your first move? (L, R or M)"
 
-rover.read_instruction("L")
-puts "Rover's current position is #{rover.x}, #{rover.y}, facing #{rover.direction}."
+until rover.read_instruction("")
+	rover.read_instruction(gets.chomp.upcase)
+	puts "Rover's current position is now #{rover.x}, #{rover.y}, facing #{rover.direction}."
+	puts "Whats your next move? (L, R, M, or exit to quit)"
+end
