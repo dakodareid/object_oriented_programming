@@ -19,5 +19,6 @@ class Instructor < People
 	end
 end
 
-student = Student.new
 instructor = Instructor.new
+instructor.name = "Chris"
+instructor.greeting
