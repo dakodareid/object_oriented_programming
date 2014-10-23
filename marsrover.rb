@@ -71,7 +71,7 @@ puts "Rover's STARTING position is #{rover.x}, #{rover.y}, facing #{rover.direct
 
 puts "Whats your first move? (L, R or M)"
 
-until rover.read_instruction("")
+while true
 	rover.read_instruction(gets.chomp.upcase)
 	puts "Rover's current position is now #{rover.x}, #{rover.y}, facing #{rover.direction}."
 	puts "Whats your next move? (L, R, M, or exit to quit)"
