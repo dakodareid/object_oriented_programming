@@ -1,5 +1,9 @@
 class People
 	attr_accessor:name
+
+	def greeting
+		puts "Hi, my name is #{name}"
+	end
 end
 
 
