@@ -22,3 +22,7 @@ end
 instructor = Instructor.new
 instructor.name = "Chris"
 instructor.greeting
+
+student = Instructor.new
+student.name = "Christina"
+student.greeting
