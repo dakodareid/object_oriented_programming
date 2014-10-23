@@ -3,13 +3,13 @@ class People
 end
 
 
-class Student
+class Student < People
 	def learn
 		puts "I get it!"
 	end
 end
 
-class Instructor
+class Instructor < People
 	def teach
 		puts "Everything in Ruby is an Object!"
 	end
