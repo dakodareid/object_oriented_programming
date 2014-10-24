@@ -50,28 +50,33 @@ class Product
 		@name = name
 		@cost = cost
 		@product_type = product_type
+		# @cost_withtax = cost *
 	end
 
-	def calculate_parameters(object_type)
-
-		if object_type == "FOOD"
+	def calculate_parameters
+		
+		if @product_type == "FOOD"
 			sales_tax_exempt 
-		elsif object_type == "BOOKS"
+		elsif @product_type == "BOOKS"
 			sales_tax_exempt
-		elsif object_type == "MEDICINE"
+		elsif @product_type == "MEDICINE"
 			sales_tax_exempt		
-		elsif object_type == "IMPORTED"
+		elsif @product_type == "IMPORTED"
 			import_tax	
-		elsif object_type == "EXIT"
-			close_app
 		else
-			(@pcost * 1.050)
+			cost_with_sales_tax = @cost *1.05
+			puts "The cost with sales tax is $#{cost_with_sales_tax}."
 		end
-
 	end
+
 
 	def sales_tax_exempt
-		cost 
+		puts "The price without tax is $#{@cost}." 
+	end
+
+	def import_tax
+		cost_with_import_tax = @cost *1.1
+		puts "The cost with import tax is $#{cost_with_import_tax}."
 	end
 
 	def close_app
@@ -81,9 +86,12 @@ class Product
 
 end
 
-product1 = Product.new("soap", 10, "clean")
+product1 = Product.new("soap", 10, "IMPORTED")
 puts product1.name
 puts product1.cost
 puts product1.product_type
 
+product1.calculate_parameters
+
+# product2 = Product.new("paper back", 12, )
 
